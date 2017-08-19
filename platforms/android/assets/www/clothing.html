@@ -84,8 +84,11 @@
 					<div class="col-md-12">	
 					<h2></h2>
 		
+				 
 				   <form id="frmLogin" style="color: white;">
-  <div class="form-group">
+ 
+  
+ <div class="form-group">
     <input type="text" class="form-control" id="p_name" placeholder="Ad Title">
   </div>
   <div class="form-group">
@@ -111,18 +114,16 @@
        <option>CLOSE</option> 
     </select>
   </div>
-   <div class="form-group">
-    <input type="file" class="form-control" id="image1">
-  </div>
-  <div class="form-group">
-    <input type="file" class="form-control" id="image2">
-  </div>
-  <div class="form-group">
-    <input type="file" class="form-control" id="image3">
-  </div>
+  
+  <!-- <div class="form-group"> -->
+    <!-- <input type="file" class="form-control" id="image2"> -->
+  <!-- </div> -->
+  <!-- <div class="form-group"> -->
+    <!-- <input type="file" class="form-control" id="image3"> -->
+  <!-- </div> -->
   
   
- <a href="#" style="text-decoration:none;"><input type="submit" value="Post Ad" style="width:100%; padding:10px; background:#333; font-size: 18px; font-weight: bold;" onclick="postAd();"/></a>
+ <a href="#" style="text-decoration:none;"><input type="submit" value="Next" style="width:100%; padding:10px; background:#333; font-size: 18px; font-weight: bold;" onclick="postAd();"/></a>
 </form>
                 </div>
                 </div>
@@ -133,7 +134,7 @@
          </div>
 		
         </div>
-		 <script>
+		<script>
         function postAd() {
 		var category = "Clothing";
 		var useradd_id =getParameterByName('user'); 
@@ -151,7 +152,7 @@
 		
 		 var dataString = "&useradd_id=" + useradd_id + "&category=" + category + "&price=" + price + "&p_name=" + 
 		 p_name + "&action=" + action + "&address=" + address + "&city=" + city + "&country=" + country + "&description=" + description + "&image1=" + image1 + "&image2=" + image2 + "&image3=" + image3 ;
-		if( $.trim(useradd_id).length > 0 && $.trim(category).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0 && $.trim(address).length > 0 && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0 && $.trim(image1).length > 0 && $.trim(image2).length > 0 && $.trim(image3).length > 0)
+		if( $.trim(useradd_id).length > 0 && $.trim(category).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0 && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0 )
 		{
               $.ajax({
                     type: "POST",
@@ -163,9 +164,7 @@
                     complete: function (data) {
 						console.log(data);
 						
-                     
-                           alert("Product Has Been Uploaded Successfully!");
-							  category();
+                     window.location="uploadimage.html?user="+useradd_id+"&&p_name="+p_name+"&category="+category+"&price="+price+"";
                     }
 					
                 });
@@ -178,6 +177,7 @@
         }
 
     </script>
+	
 		 
     </body>
 </html>

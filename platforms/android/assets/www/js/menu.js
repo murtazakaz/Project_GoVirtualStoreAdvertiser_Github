@@ -49,7 +49,8 @@ function loadshow(){
 $("#loadertxt").show();
 $("#loader").show();
 }
-
+			function viewadspage()
+			{ window.location="viewads.html?user="+user_id+"&email="+email+"&fbpic="+fbpic+"";}
 			function showreview(id)
 			{ window.location="showreview.html?user="+user_id+"&email="+email+"&fbpic="+fbpic+"&name="+id+"";}
 
@@ -191,6 +192,77 @@ function fail(error) {
 }
 // end uploading
 		
+	function takephoto1()
+{
+navigator.camera.getPicture(uploadPhoto1, onFail, { 
+quality: 40, 
+correctOrientation : true,
+saveToPhotoAlbum: true,
+destinationType: Camera.DestinationType.FILE_URL
+});
+}
+function uploadFromGallery1() {
+
+    // Retrieve image file location from specified source
+    navigator.camera.getPicture(uploadPhoto1,
+                                function(message) { alert('get picture failed'); },
+                                { quality: 40, 
+								correctOrientation : true,
+                                destinationType: navigator.camera.DestinationType.FILE_URI,
+                                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+                                );
+
+}
+function onFail(message) {
+alert('Failed because: ' + message);
+}
+
+function uploadPhoto1(imageURI) {
+	 loadshow();
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    // options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+	 mystring = imageURI.substr(imageURI.lastIndexOf('/')+1); 
+var newchar = '1';
+mystring = mystring.split('?').join(newchar);
+	options.fileName=mystring;
+    options.mimeType="image/jpeg";
+    imagesrc = imageURI;
+	document.getElementById("userimg").src = imagesrc;
+	// alert("save "+imagesrc);
+	 var user =getParameterByName('user');
+	 var p_name =getParameterByName('p_name');
+	 var category =getParameterByName('category');
+	 var price =getParameterByName('price');
+	
+    var params = new Object();
+    options.params = params;
+	 options.chunkedMode = false;
+    var ft = new FileTransfer();
+	// alert(imageURI);
+    ft.upload(imageURI, encodeURI("http://govirtualstore.com/app/iOS/imageupload.php?useradd_id="+user+"&p_name="+p_name+"&category="+category+"&price="+price+""), win, fail, options);
+}
+
+function win(r) {
+	 loadhide();
+	regshow();
+	//alert("An upload: Code = " + r.response);
+    // alert("Code = " + r.responseCode);
+    // alert("Response = " + r.response);
+    // alert("Sent = " + r.bytesSent);
+}
+
+function fail(error) {
+	 loadhide();
+    // alert("Check Internet connection = " + error.code);
+	 alert("Check Internet connection");
+    // alert("upload error source " + error.source);
+    // alert("upload error target " + error.target);
+}
+// end uploading
 		
+		
+		
+         		
 		
          

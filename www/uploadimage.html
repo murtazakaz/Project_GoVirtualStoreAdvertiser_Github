@@ -11,6 +11,9 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/jqm-icon-pack-fa.css">
+		 <link href="css/style.css" rel="stylesheet">
+
+        <link href="css/animate.css" rel="stylesheet">
         <title>Go Virtual</title>
         <script type="text/javascript" src="cordova.js"></script>
 		 <script type="text/javascript" src="js/menu.js"></script>
@@ -100,15 +103,17 @@
 		
 				<center>   <form id="frmLogin" style="color: black;">
  <div class="form-group">
-	<img id="userPic" src="img/profile.png" style=" border-radius: 50%;  height: 150px; width: 50%;" />
+	<img id="userimg" src="img/profile.png" style=" border-radius: 50%;  height: 150px; width: 50%;" />
 	<br><br>
- <a  onClick="takephoto()()"><img src="img/camera.png" style="height: 60px;" /><br> Capture from Camera </a>
+ <a  onClick="takephoto1()"><img src="img/camera.png" style="height: 60px;" /><br> Capture from Camera </a>
 	 </div>
 	<div>
 <label>OR</label>
-	<a onClick="uploadFromGallery()"><img src="img/gallery.png" style="height: 60px;" /><br> Upload from Gallery </a>
+	<a onClick="uploadFromGallery1()"><img src="img/gallery.png" style="height: 60px;" /><br> Upload from Gallery </a>
   </div>
-  
+  <div id="loader" class="ball"></div>
+<br>
+<center><p id="loadertxt">Please wait... while image is uploading</p></center>
  
   
   <!-- <div class="form-group"> -->
@@ -119,7 +124,7 @@
   <!-- </div> -->
   <br><br><br>
   
- <a href="#" style="text-decoration:none;"><input type="submit" value="Post Ad" style="width:100%; padding:10px; background:#333; font-size: 18px; font-weight: bold;" onclick="postAd();"/></a>
+ <a id="register" style="text-decoration:none;"><input type="submit" value="Post Ad" style="width:100%; padding:10px; background:#333; font-size: 18px; font-weight: bold;" onclick="postAd();"/></a>
 </form></center>  
                 </div>
                 </div>
@@ -141,14 +146,12 @@
 		var city = $("#city").val();
 		var country = $("#country").val();
 		var description = $("#description").val();
-		var image1 = $("#image1").val();
-		var image2 = $("#image2").val();
-		var image3 = $("#image3").val();
+		
 		
 		
 		 var dataString = "&useradd_id=" + useradd_id + "&category=" + category + "&price=" + price + "&p_name=" + 
-		 p_name + "&action=" + action + "&address=" + address + "&city=" + city + "&country=" + country + "&description=" + description + "&image1=" + image1 + "&image2=" + image2 + "&image3=" + image3 ;
-		if( $.trim(useradd_id).length > 0 && $.trim(category).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0 && $.trim(address).length > 0 && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0 && $.trim(image1).length > 0 && $.trim(image2).length > 0 && $.trim(image3).length > 0)
+		 p_name + "&action=" + action + "&address=" + address + "&city=" + city + "&country=" + country + "&description=" + description ;
+		if( $.trim(useradd_id).length > 0 && $.trim(category).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0 && $.trim(address).length > 0 && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0 )
 		{
               $.ajax({
                     type: "POST",
