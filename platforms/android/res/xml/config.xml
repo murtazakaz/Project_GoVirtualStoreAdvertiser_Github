@@ -20,6 +20,13 @@
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
+    <feature name="SpinnerPlugin">
+        <param name="android-package" value="net.justin_credible.cordova.SpinnerPlugin" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
     <name>Virtual Advertiser</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

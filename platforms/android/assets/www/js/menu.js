@@ -57,7 +57,7 @@ $("#loader").show();
 			function category()
 			{ window.location="categories.html?user="+user_id+"&email="+email+"&fbpic="+fbpic+"";}
 			function supermarketpage() {
-               window.location="innersupermarket.html?user="+user_id+"&email="+email+"&fbpic="+fbpic+"";
+               window.location="supermarket.html?user="+user_id+"&email="+email+"&fbpic="+fbpic+"";
             }
 			function barpage() {
                window.location="bar.html?user="+user_id+"&email="+email+"&fbpic="+fbpic+"";
@@ -152,7 +152,9 @@ alert('Failed because: ' + message);
 }
 
 function uploadPhoto(imageURI) {
-	 loadshow();
+	 var options = { dimBackground: true };
+			  SpinnerPlugin.activityStart("Uploading...", options); 
+			  
     var options = new FileUploadOptions();
     options.fileKey="file";
     // options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -175,7 +177,7 @@ mystring = mystring.split('?').join(newchar);
 }
 
 function win(r) {
-	 loadhide();
+	    SpinnerPlugin.activityStop(); 	
 	regshow();
 	//alert("An upload: Code = " + r.response);
     // alert("Code = " + r.responseCode);
@@ -184,7 +186,7 @@ function win(r) {
 }
 
 function fail(error) {
-	 loadhide();
+	     SpinnerPlugin.activityStop(); 	
     // alert("Check Internet connection = " + error.code);
 	 alert("Check Internet connection");
     // alert("upload error source " + error.source);
@@ -218,7 +220,8 @@ alert('Failed because: ' + message);
 }
 
 function uploadPhoto1(imageURI) {
-	 loadshow();
+	var options = { dimBackground: true };
+			  SpinnerPlugin.activityStart("Uploading...", options); 
     var options = new FileUploadOptions();
     options.fileKey="file";
     // options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -242,9 +245,8 @@ mystring = mystring.split('?').join(newchar);
 	// alert(imageURI);
     ft.upload(imageURI, encodeURI("http://govirtualstore.com/app/iOS/imageupload.php?useradd_id="+user+"&p_name="+p_name+"&category="+category+"&price="+price+""), win, fail, options);
 }
-
 function win(r) {
-	 loadhide();
+	    SpinnerPlugin.activityStop(); 	
 	regshow();
 	//alert("An upload: Code = " + r.response);
     // alert("Code = " + r.responseCode);
@@ -253,16 +255,79 @@ function win(r) {
 }
 
 function fail(error) {
-	 loadhide();
+	     SpinnerPlugin.activityStop(); 	
     // alert("Check Internet connection = " + error.code);
 	 alert("Check Internet connection");
     // alert("upload error source " + error.source);
     // alert("upload error target " + error.target);
 }
+
+
+
+
 // end uploading
 		
+//reupload		
 		
-		
-         		
+ function reuploadFromGallery() {
+
+    // Retrieve image file location from specified source
+    navigator.camera.getPicture(reuploadPhoto,
+                                function(message) { alert('get picture failed'); },
+                                { quality: 40, 
+								correctOrientation : true,
+                                destinationType: navigator.camera.DestinationType.FILE_URI,
+                                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+                                );
+
+}
+function onFail(message) {
+alert('Failed because: ' + message);
+}
+
+function reuploadPhoto(imageURI) {
+
+var options = { dimBackground: true };
+			  SpinnerPlugin.activityStart("Uploading...", options); 
+			    	
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    // options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+	 mystring = imageURI.substr(imageURI.lastIndexOf('/')+1); 
+var newchar = '1';
+mystring = mystring.split('?').join(newchar);
+	options.fileName=mystring;
+    options.mimeType="image/jpeg";
+    imagesrc = imageURI;
+	document.getElementById("image1").src = imagesrc;
+	// alert("save "+imagesrc);
+	 var p_id =getParameterByName('name');
+	
+	
+    var params = new Object();
+    options.params = params;
+	 options.chunkedMode = false;
+    var ft = new FileTransfer();
+	// alert(imageURI);
+    ft.upload(imageURI, encodeURI("http://govirtualstore.com/app/iOS/ReuploadAdimage.php?p_id="+p_id+""), win, fail, options);
+}
+
+function win(r) {
+	    SpinnerPlugin.activityStop(); 	
+	regshow();
+	//alert("An upload: Code = " + r.response);
+    // alert("Code = " + r.responseCode);
+    // alert("Response = " + r.response);
+    // alert("Sent = " + r.bytesSent);
+}
+
+function fail(error) {
+	     SpinnerPlugin.activityStop(); 	
+    // alert("Check Internet connection = " + error.code);
+	 alert("Check Internet connection");
+    // alert("upload error source " + error.source);
+    // alert("upload error target " + error.target);
+}
+        		
 		
          

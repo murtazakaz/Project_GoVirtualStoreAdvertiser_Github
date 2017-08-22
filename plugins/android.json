@@ -21,6 +21,12 @@
         },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.cufflink.ms"
+        },
+        "cordova-plugin-spinner": {
+            "PACKAGE_NAME": "com.govirtual.Advertiser"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.govirtual.Advertiser"
         }
     },
     "dependent_plugins": {

@@ -31,6 +31,14 @@
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SpinnerPlugin\"><param name=\"android-package\" value=\"net.justin_credible.cordova.SpinnerPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -80,6 +88,12 @@
         },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.cufflink.ms"
+        },
+        "cordova-plugin-spinner": {
+            "PACKAGE_NAME": "com.govirtual.Advertiser"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.govirtual.Advertiser"
         }
     },
     "dependent_plugins": {},
@@ -316,6 +330,22 @@
                 "cordova.InAppBrowser.open",
                 "window.open"
             ]
+        },
+        {
+            "id": "cordova-plugin-spinner.SpinnerPlugin",
+            "file": "plugins/cordova-plugin-spinner/www/spinner-plugin.js",
+            "pluginId": "cordova-plugin-spinner",
+            "clobbers": [
+                "SpinnerPlugin"
+            ]
+        },
+        {
+            "id": "cordova-plugin-statusbar.statusbar",
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -325,6 +355,8 @@
         "cordova-plugin-camera": "2.4.1",
         "cordova-plugin-file": "4.0.0",
         "cordova-plugin-file-transfer": "1.6.3",
-        "cordova-plugin-inappbrowser": "1.7.1"
+        "cordova-plugin-inappbrowser": "1.7.1",
+        "cordova-plugin-spinner": "1.1.0",
+        "cordova-plugin-statusbar": "2.2.3"
     }
 }

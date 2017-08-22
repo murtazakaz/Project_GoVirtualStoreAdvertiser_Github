@@ -111,9 +111,9 @@
 <label>OR</label>
 	<a onClick="uploadFromGallery1()"><img src="img/gallery.png" style="height: 60px;" /><br> Upload from Gallery </a>
   </div>
-  <div id="loader" class="ball"></div>
-<br>
-<center><p id="loadertxt">Please wait... while image is uploading</p></center>
+  <!-- <div id="loader" class="ball"></div> -->
+<!-- <br> -->
+<!-- <center><p id="loadertxt">Please wait... while image is uploading</p></center> -->
  
   
   <!-- <div class="form-group"> -->
@@ -137,30 +137,30 @@
         </div>
 		 <script>
         function postAd() {
-		var useradd_id =getParameterByName('user'); 
-		var category = "Airline";
-		var price = $("#price").val();
-		var p_name =$("#p_name").val();
-		var action = $("#action").val();
-		var address = $("#address").val();
-		var city = $("#city").val();
-		var country = $("#country").val();
-		var description = $("#description").val();
+		<!-- var useradd_id =getParameterByName('user');  -->
+		<!-- var category = "Airline"; -->
+		<!-- var price = $("#price").val(); -->
+		<!-- var p_name =$("#p_name").val(); -->
+		<!-- var action = $("#action").val(); -->
+		<!-- var address = $("#address").val(); -->
+		<!-- var city = $("#city").val(); -->
+		<!-- var country = $("#country").val(); -->
+		<!-- var description = $("#description").val(); -->
 		
 		
 		
-		 var dataString = "&useradd_id=" + useradd_id + "&category=" + category + "&price=" + price + "&p_name=" + 
-		 p_name + "&action=" + action + "&address=" + address + "&city=" + city + "&country=" + country + "&description=" + description ;
-		if( $.trim(useradd_id).length > 0 && $.trim(category).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0 && $.trim(address).length > 0 && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0 )
-		{
-              $.ajax({
-                    type: "POST",
-                    url: "http://govirtualstore.com/app/iOS/advertiserbooking.php",
-                    data: dataString,
-                    crossDomain: true,
-                    cache: false,
-                    dataType: "json",
-                    complete: function (data) {
+		 <!-- var dataString = "&useradd_id=" + useradd_id + "&category=" + category + "&price=" + price + "&p_name=" +  -->
+		 <!-- p_name + "&action=" + action + "&address=" + address + "&city=" + city + "&country=" + country + "&description=" + description ; -->
+		<!-- if( $.trim(useradd_id).length > 0 && $.trim(category).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0 && $.trim(address).length > 0 && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0 ) -->
+		<!-- { -->
+              <!-- $.ajax({ -->
+                    <!-- type: "POST", -->
+                    <!-- url: "http://govirtualstore.com/app/iOS/advertiserbooking.php", -->
+                    <!-- data: dataString, -->
+                    <!-- crossDomain: true, -->
+                    <!-- cache: false, -->
+                    <!-- dataType: "json", -->
+                    <!-- complete: function (data) { -->
 						
 						
                       
@@ -168,14 +168,14 @@
 							  category();
                         
                       
-                    }
+                    <!-- } -->
 					
-                });
+                <!-- }); -->
 				
-				} 
-		else { 
-		alert("Please Fill in all fields");
-		}
+				<!-- }  -->
+		<!-- else {  -->
+		<!-- alert("Please Fill in all fields"); -->
+		<!-- } -->
            
         }
 

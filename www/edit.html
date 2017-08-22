@@ -101,9 +101,9 @@
 				   $(document.getElementById('country').value=str[i].country); 
 					$(document.getElementById('description').value=str[i].description); 
 					$(document.getElementById('action').value=str[i].action); 
-					$(document.getElementById('image1').value=str[i].image1); 
-					$(document.getElementById('image2').value=str[i].image2); 
-					$(document.getElementById('image3').value=str[i].image3); 
+					$(document.getElementById('image1').src=str[i].image1); 
+					
+					
 					
 }					
 					
@@ -174,6 +174,11 @@
 					<h2></h2>
 		
 				   <form id="frmLogin" style="color: white;">
+<div class="form-group">
+    <center><img id="image1" style="height: 70px; width: 50%;">
+	</center>
+	 <center><a onclick="reuploadFromGallery()">Upload New Image</a></center>
+  </div>				   
   <div class="form-group">
     <input type="text" class="form-control" id="p_name" placeholder="Ad Title">
   </div>
@@ -200,15 +205,10 @@
        <option>CLOSE</option> 
     </select>
   </div>
-   <div class="form-group">
-    <input type="file" class="form-control" id="image1">
-  </div>
-  <div class="form-group">
-    <input type="file" class="form-control" id="image2">
-  </div>
-  <div class="form-group">
-    <input type="file" class="form-control" id="image3">
-  </div>
+   <!-- <div class="form-group"> -->
+    <!-- <input type="file" class="form-control" id="image1"> -->
+  <!-- </div> -->
+ 
   
   
  <a href="#" style="text-decoration:none;"><input type="submit" value="Post Ad" style="width:100%; padding:10px; background:#333; font-size: 18px; font-weight: bold;" onclick="postAd();"/></a>
@@ -234,14 +234,13 @@
 		var city = $("#city").val();
 		var country = $("#country").val();
 		var description = $("#description").val();
-		var image1 = $("#image1").val();
-		var image2 = $("#image2").val();
-		var image3 = $("#image3").val();
+		<!-- var image1 = $("#image1").val(); -->
+		
 		
 		
 		 var dataString = "&p_id=" + p_id + "&price=" + price + "&p_name=" + 
-		 p_name + "&action=" + action + "&address=" + address + "&city=" + city + "&country=" + country + "&description=" + description + "&image1=" + image1 + "&image2=" + image2 + "&image3=" + image3 ;
-		if( $.trim(p_id).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0  && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0 && $.trim(image1).length > 0 && $.trim(image2).length > 0 && $.trim(image3).length > 0)
+		 p_name + "&action=" + action + "&address=" + address + "&city=" + city + "&country=" + country + "&description=" + description ;
+		if( $.trim(p_id).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0  && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0 )
 		{
               $.ajax({
                     type: "POST",

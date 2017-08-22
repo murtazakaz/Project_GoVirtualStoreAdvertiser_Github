@@ -11,7 +11,9 @@
             "cordova-plugin-whitelist": {},
             "cordova-plugin-camera": {},
             "cordova-plugin-file-transfer": {},
-            "cordova-plugin-inappbrowser": {}
+            "cordova-plugin-inappbrowser": {},
+            "cordova-plugin-spinner": {},
+            "cordova-plugin-statusbar": {}
         }
     },
     "dependencies": {
@@ -22,6 +24,8 @@
         "cordova-plugin-file": "^4.0.0",
         "cordova-plugin-file-transfer": "^1.6.3",
         "cordova-plugin-inappbrowser": "^1.7.1",
+        "cordova-plugin-spinner": "^1.1.0",
+        "cordova-plugin-statusbar": "^2.2.3",
         "cordova-plugin-whitelist": "1"
     }
 }
