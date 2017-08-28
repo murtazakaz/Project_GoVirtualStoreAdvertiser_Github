@@ -97,13 +97,15 @@
 			  if ($.trim(email).length > 0 && $.trim(code).length > 0) {
                    
 					if( code == ucode){
+					var options = { dimBackground: true };
+			  SpinnerPlugin.activityStart("Loading...", options); 		
 				  $.ajax({
                     url: "http://govirtualstore.com/app/iOS/iOSsignup.php",
                     type: "POST",
                     data: {fname: fname, email: email,password:password , image: image , address : address , city : city , country :country , contact : contact},
                     success: function(data){
 					var str= data;	
-					
+					  SpinnerPlugin.activityStop(); 		
 			if(str.Status == "success"){
 			  // alert("You're now registered, " + fname );
 			   window.location.href = "imageupload.html?email="+email+"";
@@ -124,7 +126,8 @@
             
              var email = getParameterByName('email');
              
-			
+				var options = { dimBackground: true };
+			  SpinnerPlugin.activityStart("Sending Code...", options); 
 			 var dataString = "&email=" + email ;
 			//alert(dataString);
 			  if ( $.trim(email).length > 0 ) {
@@ -134,7 +137,7 @@
                     data: {email: email},
                     success: function(data){
 					var str= data;	
-					
+					  SpinnerPlugin.activityStop(); 		
 			if(str.Status == "success"){
 			   alert("Email has been sent to " + email );
 			   window.location.href = "verifycode.html?email="+email+"";

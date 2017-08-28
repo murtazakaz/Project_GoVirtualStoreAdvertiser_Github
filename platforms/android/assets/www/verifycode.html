@@ -88,6 +88,9 @@
 			 
 			
 			  if ($.trim(email).length > 0 && $.trim(code).length > 0) {
+			  	var options = { dimBackground: true };
+			  SpinnerPlugin.activityStart("Loading...", options); 
+			  
                     $.ajax({
                     url: "http://govirtualstore.com/app/iOS/verifycode.php",
                     type: "POST",
@@ -95,6 +98,7 @@
                     success: function(data){
 					var str= data;	
 					
+			  SpinnerPlugin.activityStop(); 
 			if(str.Status == "success"){
 			   alert("Code verified");
 			   window.location.href = "changepassword.html?email="+email+"";

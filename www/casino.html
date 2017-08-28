@@ -55,7 +55,7 @@
 				
                    <li><a id="go_logout" onclick="viewadspage()" style="font-family:'Microsoft NeoGothic';">View Your Ads</a></li>
 				    <li><a id="go_logout" onclick="category()()" style="font-family:'Microsoft NeoGothic';">All Categories</a></li>
-				  <li><a id="go_logout" onclick="airlinepage()" style="font-family:'Microsoft NeoGothic';">Airlines</a></li> 
+				  <!-- <li><a id="go_logout" onclick="airlinepage()" style="font-family:'Microsoft NeoGothic';">Airlines</a></li>  -->
 				  <li><a id="go_logout" onclick="barpage()" style="font-family:'Microsoft NeoGothic';">Bars</a></li>
 				  <li><a id="go_logout" onclick="carspage()" style="font-family:'Microsoft NeoGothic';">Cars</a></li> 
 				  <li><a id="go_logout" onclick="casinopage()" style="font-family:'Microsoft NeoGothic';">Casinos</a></li> 
@@ -63,7 +63,7 @@
 				  <li><a id="go_logout" onclick="drycleanpage()" style="font-family:'Microsoft NeoGothic';">Dry Cleaning</a></li> 
 				  <li><a id="go_logout" onclick="hairsalonpage()" style="font-family:'Microsoft NeoGothic';">Hair Salon</a></li> 
 				  <li><a id="go_logout" onclick="hospitalpage()" style="font-family:'Microsoft NeoGothic';">Hospitals</a></li> 
-				  <li><a id="go_logout" onclick="hotelpage()" style="font-family:'Microsoft NeoGothic';">Hotels</a></li>
+				  <!-- <li><a id="go_logout" onclick="hotelpage()" style="font-family:'Microsoft NeoGothic';">Hotels</a></li> -->
 				  <li><a id="go_logout" onclick="massagepage()" style="font-family:'Microsoft NeoGothic';">Massage</a></li> 
 				  <li><a id="go_logout" onclick="moviepage()" style="font-family:'Microsoft NeoGothic';">Movies</a></li> 
 				  <li><a id="go_logout" onclick="nightclubspage()" style="font-family:'Microsoft NeoGothic';">Night Clubs</a></li>
@@ -159,15 +159,17 @@
 		 var dataString = "&useradd_id=" + useradd_id + "&category=" + category + "&price=" + price + "&p_name=" + 
 		 p_name + "&action=" + action + "&address=" + address + "&city=" + city + "&country=" + country + "&description=" + description ;
 		if( $.trim(useradd_id).length > 0 && $.trim(category).length > 0 && $.trim(price).length > 0 && $.trim(p_name).length > 0 && $.trim(action).length > 0 && $.trim(address).length > 0 && $.trim(address).length > 0 && $.trim(city).length > 0 && $.trim(country).length > 0 && $.trim(description).length > 0)
-		{    
+		{    var options = { dimBackground: true };
+			  SpinnerPlugin.activityStart("Fetching...", options); 		
 			 <!-- window.location="uploadimage.html?"+dataString+"";		 -->
               $.ajax({
                       url: "http://govirtualstore.com/app/iOS/advertiserbooking.php",
                     type: "POST",
                     data: dataString,
                     complete: function(data){
-						
-					window.location="uploadimage.html?user="+useradd_id+"&&p_name="+p_name+"&category="+category+"&price="+price+"";
+						 SpinnerPlugin.activityStop(); 	
+				
+					window.location="uploadimage.html?user="+useradd_id+"&p_name="+p_name+"&category="+category+"&price="+price+"&fbpic="+fbpic+"";
 					}
                 });
 				

@@ -59,7 +59,7 @@
 		<script>
 		function detailpage(id) {
 	
-		      window.location="details.html?user="+user_id+"&name="+id+"&email="+email+""; 
+		      window.location="details.html?user="+user_id+"&name="+id+"&email="+email+"&fbpic="+fbpic+""; 
             }
 			function directionpage(id) {
 		
@@ -70,7 +70,8 @@
 		</script>
 		<script>
 		$(function initialize() {
-		 
+		 <!-- var options = { dimBackground: true }; -->
+			  <!-- SpinnerPlugin.activityStart("Fetching...", options);  -->
 		if(user_id != 0){
             $.ajax({
                 type: "POST",
@@ -80,13 +81,13 @@
                 dataType: "json",
                 success: function (response) {
                     var str = response;
-					
+					  <!-- SpinnerPlugin.activityStop(); 	 -->
 					var tt;
 					for (i in str)
                     {	
 			
 						
-                       tt =  "<div class='gallery-item col-md-3 col-sm-3 col-xs-4'id='gitem' style='margin-bottom:5px'><a onclick='detailpage("+str[i].id+")'> <img src='"+str[i].image1+"' id='img' style='width:100%'><span><i class='fa fa-search'></i></span></a><center id='center' style='background: #033739;padding: 5px;'><h5><a onclick='detailpage("+str[i].id+")' id='col' style='color:#fff'>"+str[i].name+"</a></h5><p id='col' style='color:#fff'><b>"+str[i].action+"</b></p><div class='row'><div class='col-md-6'><p id='col' style='color:#fff'>"+str[i].address+" </p></div<div class='col-md-6'><p id='col' style='color:#fff'>"+str[i].city+"</p></div></div><p><b id='col' style='color:#fff'>Price: $"+str[i].price+" </b></p><div class='row'><div class='col-md-5'><p><i class='fa fa-map-marker' aria-hidden='true'></i> <a onclick='directionpage("+str[i].id+")'>Get Direction</a></p></div></div></center></div>";
+                       tt =  "<div class='gallery-item col-md-3 col-sm-3 col-xs-4'id='gitem' style='margin-bottom:5px'><a onclick='detailpage("+str[i].id+")'> <img src='"+str[i].image1+"' id='img' style='width:100%'><span><i class='fa fa-search'></i></span></a><center id='center' style='background: #033739;padding: 5px;'><h5><a onclick='detailpage("+str[i].id+")' id='col' style='color:#fff'>"+str[i].name+"</a></h5><p id='col' style='color:#fff'><b>"+str[i].action+"</b></p><div class='row'><div class='col-md-6'><p id='col' style='color:#fff'>"+str[i].address+" </p></div<div class='col-md-6'><p id='col' style='color:#fff'>"+str[i].city+"</p></div></div><p><b id='col' style='color:#fff'>Price: $"+str[i].price+" </b></p><div class='row'><div class='col-md-5'></div></div></center></div>";
                        $("#wrapper").append(tt);
 					   
 					   						 
